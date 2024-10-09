@@ -1,15 +1,13 @@
-bool isPalindrome(String s) {
-  if (s.length < 3) {
-    return false;
-  }
-  String reversed = s.split('').reversed.join('');
-  return s == reversed;
-}
+import '9-palindrome.dart';
 
 String longestPalindrome(String s) {
-  String longestPalindrome = "none";
+  if (s.length < 3) {
+    return "none";
+  }
+
+  String longestPalindrome = "";
   for (int i = 0; i < s.length; i++) {
-    for (int j = i + 2; j < s.length + 1; j++) {
+    for (int j = i + 2; j <= s.length; j++) {
       String substring = s.substring(i, j);
       if (isPalindrome(substring) &&
           substring.length > longestPalindrome.length) {
@@ -17,5 +15,6 @@ String longestPalindrome(String s) {
       }
     }
   }
-  return longestPalindrome;
+
+  return longestPalindrome.isEmpty ? "none" : longestPalindrome;
 }
